@@ -68,7 +68,7 @@ position = Vector2(585, 670)
 shape = SubResource("RectangleShape2D_fif4v")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
-position = Vector2(416, 342)
+position = Vector2(583, 323)
 script = ExtResource("3_g8uh0")
 metadata/_edit_group_ = true
 
