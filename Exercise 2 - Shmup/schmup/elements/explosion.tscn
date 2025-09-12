@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgvwaklx6vgkp"]
+
+[ext_resource type="Texture2D" uid="uid://cl6ha3yaa1bqs" path="res://assets/kenney_space-shooter-redux/PNG/Damage/playerShip1_damage1.png" id="1_0ykbj"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8iy2o"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -164.0
+angle_max = 427.7
+spread = 85.825
+initial_velocity_max = 316.83
+gravity = Vector3(0, 98, 0)
+
+[node name="Explosion" type="GPUParticles2D"]
+position = Vector2(512, 311)
+texture = ExtResource("1_0ykbj")
+lifetime = 0.39
+process_material = SubResource("ParticleProcessMaterial_8iy2o")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://s37kp3x6ti6s"]
+
+[ext_resource type="Script" uid="uid://bfrt1w02vjixq" path="res://scripts/player_ship.gd" id="1_2fpcg"]
+[ext_resource type="Texture2D" uid="uid://c14fvjhrt7e0p" path="res://assets/kenney_space-shooter-redux/PNG/playerShip2_orange.png" id="2_ce2np"]
+[ext_resource type="PackedScene" uid="uid://b30t4a7vknekp" path="res://elements/laser.tscn" id="2_l661m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slp7o"]
+size = Vector2(58.2857, 75.701)
+
+[node name="PlayerShip" type="CharacterBody2D"]
+position = Vector2(628, 601)
+motion_mode = 1
+script = ExtResource("1_2fpcg")
+bullet_element = ExtResource("2_l661m")
+
+[node name="PlayerShip2Orange" type="Sprite2D" parent="."]
+scale = Vector2(0.875, 0.713333)
+texture = ExtResource("2_ce2np")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.875, 0.713333)
+shape = SubResource("RectangleShape2D_slp7o")
+metadata/_edit_group_ = true

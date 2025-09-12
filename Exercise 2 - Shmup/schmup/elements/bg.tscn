@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdb2c4v6euc56"]
+
+[ext_resource type="Texture2D" uid="uid://r55c81acs71n" path="res://assets/kenney_space-shooter-redux/Backgrounds/blue.png" id="1_ta0sd"]
+
+[node name="BG" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Blue" type="Sprite2D" parent="."]
+position = Vector2(119, 125)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue2" type="Sprite2D" parent="."]
+position = Vector2(372, 126)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue3" type="Sprite2D" parent="."]
+position = Vector2(625, 125)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue4" type="Sprite2D" parent="."]
+position = Vector2(868, 124)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue5" type="Sprite2D" parent="."]
+position = Vector2(1069, 123)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue7" type="Sprite2D" parent="."]
+position = Vector2(114, 588)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue9" type="Sprite2D" parent="."]
+position = Vector2(627, 363)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue10" type="Sprite2D" parent="."]
+position = Vector2(870, 362)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue8" type="Sprite2D" parent="."]
+position = Vector2(374, 364)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue11" type="Sprite2D" parent="."]
+position = Vector2(620, 588)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue6" type="Sprite2D" parent="."]
+position = Vector2(121, 363)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue12" type="Sprite2D" parent="."]
+position = Vector2(863, 587)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue13" type="Sprite2D" parent="."]
+position = Vector2(1071, 361)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue14" type="Sprite2D" parent="."]
+position = Vector2(1064, 586)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true
+
+[node name="Blue15" type="Sprite2D" parent="."]
+position = Vector2(367, 589)
+texture = ExtResource("1_ta0sd")
+metadata/_edit_lock_ = true

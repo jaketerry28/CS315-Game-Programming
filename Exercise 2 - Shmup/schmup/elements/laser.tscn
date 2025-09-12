@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b30t4a7vknekp"]
+
+[ext_resource type="Script" uid="uid://c2httq8rg8u0q" path="res://scripts/laser.gd" id="1_qtxvx"]
+[ext_resource type="Texture2D" uid="uid://ixoigysttbpy" path="res://assets/kenney_space-shooter-redux/PNG/Lasers/laserGreen11.png" id="2_1vixy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqydh"]
+size = Vector2(14, 54)
+
+[node name="Laser" type="RigidBody2D"]
+position = Vector2(50, 67)
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_qtxvx")
+shoot_speed = 750
+
+[node name="LaserGreen11" type="Sprite2D" parent="."]
+position = Vector2(0.75, 1)
+scale = Vector2(1.5, 1)
+texture = ExtResource("2_1vixy")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.75, 1)
+shape = SubResource("RectangleShape2D_uqydh")
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

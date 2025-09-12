@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk78klmpkyuks"]
+
+[ext_resource type="Script" uid="uid://dt3vdxksk73gr" path="res://scripts/enemy.gd" id="1_btx3p"]
+[ext_resource type="Texture2D" uid="uid://b05gmufaqheq0" path="res://assets/kenney_space-shooter-redux/PNG/Enemies/enemyGreen4.png" id="2_uxutw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slp7o"]
+size = Vector2(88, 88)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_btx3p")
+move_dir = Vector2(0, 85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_slp7o")
+
+[node name="EnemyGreen4" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+texture = ExtResource("2_uxutw")

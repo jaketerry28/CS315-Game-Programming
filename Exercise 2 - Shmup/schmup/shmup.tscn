@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2j703cteborv"]
+
+[ext_resource type="PackedScene" uid="uid://cdb2c4v6euc56" path="res://elements/bg.tscn" id="1_i3sco"]
+[ext_resource type="Script" uid="uid://cilcltm4ytib6" path="res://scripts/shmup.gd" id="1_mqevr"]
+[ext_resource type="PackedScene" uid="uid://s37kp3x6ti6s" path="res://elements/player_ship.tscn" id="2_otwqh"]
+[ext_resource type="Script" uid="uid://b3kleoh6yn01e" path="res://scripts/enemy_spawner.gd" id="3_otwqh"]
+[ext_resource type="AudioStream" uid="uid://c03syjq2l7534" path="res://assets/kenney_space-shooter-redux/explosion.wav" id="5_em5ob"]
+[ext_resource type="AudioStream" uid="uid://birvx3pnob7xs" path="res://assets/kenney_space-shooter-redux/Bonus/sfx_laser1.ogg" id="6_slp7o"]
+
+[node name="Shmup" type="Node2D" node_paths=PackedStringArray("txt_score")]
+script = ExtResource("1_mqevr")
+txt_score = NodePath("txt_score")
+
+[node name="BG" parent="." instance=ExtResource("1_i3sco")]
+
+[node name="txt_score" type="Label" parent="."]
+offset_left = 1082.0
+offset_top = 3.0
+offset_right = 1122.0
+offset_bottom = 26.0
+scale = Vector2(1.60392, 1.60392)
+text = "0"
+
+[node name="PlayerShip" parent="." instance=ExtResource("2_otwqh")]
+position = Vector2(582, 596)
+
+[node name="EnemySpawner" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+script = ExtResource("3_otwqh")
+
+[node name="SFXExplosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_em5ob")
+volume_db = -7.354
+
+[node name="SFXLaser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_slp7o")
+max_distance = 1271.0
+attenuation = 2.46229
+
+[connection signal="timeout" from="EnemySpawner" to="EnemySpawner" method="_on_timeout"]
