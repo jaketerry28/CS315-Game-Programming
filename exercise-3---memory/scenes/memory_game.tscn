@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://18gibyf7q4by"]
+
+[ext_resource type="Script" uid="uid://dqwhfrhcx1nv4" path="res://scripts/memory_game.gd" id="1_s48ts"]
+[ext_resource type="PackedScene" uid="uid://b5sx7rjc64bvq" path="res://scenes/card.tscn" id="1_ww37f"]
+[ext_resource type="Texture2D" uid="uid://7xup5vdl28tq" path="res://sprites/card_clubs_02.png" id="3_mr8fx"]
+[ext_resource type="Texture2D" uid="uid://djji5txey4uyv" path="res://sprites/card_diamonds_04.png" id="3_wgu87"]
+[ext_resource type="Texture2D" uid="uid://bc01fdh4bp8qj" path="res://sprites/card_joker_black.png" id="4_s48ts"]
+[ext_resource type="Texture2D" uid="uid://dejg5ucfpwgdu" path="res://sprites/card_hearts_03.png" id="5_of3vm"]
+
+[node name="memoryGame" type="Node2D"]
+script = ExtResource("1_s48ts")
+
+[node name="GameMain" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="GameMain"]
+layout_mode = 0
+offset_right = 182.0
+offset_bottom = 175.0
+columns = 3
+
+[node name="Card" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("3_mr8fx")
+card_value = "2clubs"
+
+[node name="Card2" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("3_wgu87")
+card_value = "4diamonds"
+
+[node name="Card3" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("4_s48ts")
+card_value = "blackjoker"
+
+[node name="Card4" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("5_of3vm")
+card_value = "3hearts"
+
+[node name="Card5" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("5_of3vm")
+card_value = "3hearts"
+
+[node name="Card6" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("4_s48ts")
+card_value = "blackjoker"
+
+[node name="Card7" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("3_wgu87")
+card_value = "4diamonds"
+
+[node name="Card8" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("3_mr8fx")
+card_value = "2clubs"
+
+[node name="Card9" parent="GameMain/GridContainer" instance=ExtResource("1_ww37f")]
+layout_mode = 2
+card_front = ExtResource("3_mr8fx")
+card_value = "2clubs"
+
+[node name="FlipTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="card_selected" from="GameMain/GridContainer/Card" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card2" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card3" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card4" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card5" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card6" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card7" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card8" to="." method="card_clicked"]
+[connection signal="card_selected" from="GameMain/GridContainer/Card9" to="." method="card_clicked"]
+[connection signal="timeout" from="FlipTimer" to="." method="_on_flip_timer_timeout"]
