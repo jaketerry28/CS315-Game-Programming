@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccewbwscw0kk1"]
+
+[ext_resource type="SpriteFrames" uid="uid://djg3dex2tyjvn" path="res://player_frames.tres" id="1_d8sh7"]
+[ext_resource type="Script" uid="uid://cdjmytowtbh8s" path="res://inf_player.gd" id="1_r7fsg"]
+[ext_resource type="PackedScene" uid="uid://bmpk0g1lanree" path="res://ground.tscn" id="3_tcqou"]
+[ext_resource type="AudioStream" uid="uid://cw62fb2grqlix" path="res://sounds/jump.wav" id="4_1dhj6"]
+[ext_resource type="Script" uid="uid://b8k6or6c55uln" path="res://ground_spawner.gd" id="4_6ixe0"]
+[ext_resource type="Script" uid="uid://kxtwe0iulb2g" path="res://coin.gd" id="5_n6gre"]
+[ext_resource type="AudioStream" uid="uid://bjbj1q0o1twig" path="res://sounds/crash.wav" id="5_obfm3"]
+[ext_resource type="SpriteFrames" uid="uid://cmv7osnslb3y2" path="res://coins.tres" id="6_ve7e6"]
+[ext_resource type="AudioStream" uid="uid://dw4wg8a2gphi" path="res://sounds/Ludum Dare 38 - Track 2.wav" id="9_hx5ul"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vvoha"]
+radius = 26.0
+height = 88.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_01pq1"]
+
+[node name="InfiniteRunner" type="Node2D"]
+
+[node name="Ground_spawner" type="Node2D" parent="."]
+position = Vector2(1156, 522)
+script = ExtResource("4_6ixe0")
+
+[node name="Timer" type="Timer" parent="Ground_spawner"]
+autostart = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(226, 308)
+script = ExtResource("1_r7fsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(18, 57)
+shape = SubResource("CapsuleShape2D_vvoha")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_d8sh7")
+animation = &"hurt"
+autoplay = "default"
+
+[node name="SFX" type="Node2D" parent="Player"]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="Player/SFX"]
+stream = ExtResource("4_1dhj6")
+
+[node name="crash" type="AudioStreamPlayer2D" parent="Player/SFX"]
+stream = ExtResource("5_obfm3")
+
+[node name="Ground" parent="." instance=ExtResource("3_tcqou")]
+position = Vector2(154, 520)
+
+[node name="Ground2" parent="." instance=ExtResource("3_tcqou")]
+position = Vector2(381, 522)
+
+[node name="Ground3" parent="." instance=ExtResource("3_tcqou")]
+position = Vector2(596, 522)
+
+[node name="Ground4" parent="." instance=ExtResource("3_tcqou")]
+position = Vector2(849, 520)
+
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2(468, 452)
+script = ExtResource("5_n6gre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource("CircleShape2D_01pq1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin"]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("6_ve7e6")
+frame_progress = 0.129138
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_hx5ul")
+autoplay = true
+
+[connection signal="timeout" from="Ground_spawner/Timer" to="Ground_spawner" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
