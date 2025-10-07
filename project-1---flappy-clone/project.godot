@@ -1,0 +1,29 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Project 1 - Flappy Clone"
+run/main_scene="uid://4biyymwgcuur"
+config/features=PackedStringArray("4.4", "Forward Plus")
+run/canvas_textures/default_texture_filter=1
+
+[display]
+
+window/size/viewport_width=864
+window/size/viewport_height=936
+
+[global_group]
+
+pipes=""
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

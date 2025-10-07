@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://hx1x8faaiinp"]
+
+[ext_resource type="Texture2D" uid="uid://bn6ak7yuuiv4j" path="res://assets/sprites/Pigeon Sprite-Sheet/pigeon_fiy-Sheet.png" id="1_5ph6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1i6t"]
+atlas = ExtResource("1_5ph6u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0qy1"]
+atlas = ExtResource("1_5ph6u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ix2c"]
+atlas = ExtResource("1_5ph6u")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbtia"]
+atlas = ExtResource("1_5ph6u")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76raj"]
+atlas = ExtResource("1_5ph6u")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq3ns"]
+atlas = ExtResource("1_5ph6u")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd6md"]
+atlas = ExtResource("1_5ph6u")
+region = Rect2(192, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1i6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0qy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ix2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbtia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76raj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq3ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd6md")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 12.0
+}]

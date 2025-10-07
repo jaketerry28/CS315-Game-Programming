@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://conmxp8b4eu7y"]
+
+[ext_resource type="Shader" uid="uid://ch3afv0ujh8sv" path="res://assets/scripts/auto_scroller.gdshader" id="1_ep4bu"]
+[ext_resource type="Texture2D" uid="uid://brbdl02gg851y" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/city skyline/Layers/back.png" id="2_0g3x5"]
+[ext_resource type="Texture2D" uid="uid://cx1ggkh3sg3" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/city skyline/Layers/buildings.png" id="3_vudni"]
+[ext_resource type="Texture2D" uid="uid://djtrwsy5htg5q" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/city skyline/Layers/front.png" id="4_avqv5"]
+[ext_resource type="AudioStream" uid="uid://ctcem0jj7jfo1" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/music/cyberpunk-street.ogg" id="4_fdg3b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfk6u"]
+shader = ExtResource("1_ep4bu")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.02
+shader_parameter/elapsed_time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g3x5"]
+shader = ExtResource("1_ep4bu")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.05
+shader_parameter/elapsed_time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vudni"]
+shader = ExtResource("1_ep4bu")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed_scale = 0.07
+shader_parameter/elapsed_time = 0.0
+
+[node name="AutoScroller" type="Node2D"]
+
+[node name="BackFixedTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xfk6u")
+offset_left = -77.0
+offset_top = -13.0
+offset_right = 243.0
+offset_bottom = 259.0
+scale = Vector2(3.62437, 3.69732)
+texture = ExtResource("2_0g3x5")
+stretch_mode = 1
+
+[node name="TextureRectMiddle" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_0g3x5")
+offset_left = -77.0
+offset_top = -13.0
+offset_right = 243.0
+offset_bottom = 259.0
+scale = Vector2(3.01633, 4.97262)
+texture = ExtResource("3_vudni")
+stretch_mode = 1
+
+[node name="TextureRectForeground" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_vudni")
+offset_left = -89.0
+offset_top = -93.0
+offset_right = 599.0
+offset_bottom = 179.0
+scale = Vector2(3.82293, 5.14633)
+texture = ExtResource("4_avqv5")
+stretch_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fdg3b")
+volume_db = -16.155
+autoplay = true

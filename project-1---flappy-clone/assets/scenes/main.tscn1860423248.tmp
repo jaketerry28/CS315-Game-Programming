@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://4biyymwgcuur"]
+
+[ext_resource type="Script" uid="uid://cbh4oolhy7vpl" path="res://assets/scripts/main.gd" id="1_dfgan"]
+[ext_resource type="PackedScene" uid="uid://conmxp8b4eu7y" path="res://assets/scenes/auto_scroller.tscn" id="1_mr7gh"]
+[ext_resource type="PackedScene" uid="uid://bkwv364gupll8" path="res://assets/scenes/pipe.tscn" id="2_etxf0"]
+[ext_resource type="PackedScene" uid="uid://dq74j72gf75an" path="res://assets/scenes/bird.tscn" id="2_kpi06"]
+[ext_resource type="PackedScene" uid="uid://dgykkqwjcri0r" path="res://assets/scenes/ground.tscn" id="4_sfrgt"]
+[ext_resource type="PackedScene" uid="uid://jtfbspxhawbh" path="res://assets/scenes/parallax_background.tscn" id="6_vesw4"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_dfgan")
+pipe_scene = ExtResource("2_etxf0")
+
+[node name="AutoScroller" parent="." instance=ExtResource("1_mr7gh")]
+visible = false
+
+[node name="Bird" parent="." instance=ExtResource("2_kpi06")]
+position = Vector2(207, 446)
+scale = Vector2(1.6, 1.6)
+
+[node name="Ground" parent="." instance=ExtResource("4_sfrgt")]
+z_index = 2
+
+[node name="PipeSpawner" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ParallaxBackground" parent="Camera2D" instance=ExtResource("6_vesw4")]
+
+[connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]
