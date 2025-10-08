@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://ff1lstb8i0tx" path="res://assets/scripts/bird.gd" id="1_f5n2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5n2k"]
-radius = 20.4018
-height = 40.8037
+radius = 16.4894
+height = 32.9788
 
 [node name="Bird" type="CharacterBody2D"]
 script = ExtResource("1_f5n2k")
@@ -18,7 +18,7 @@ frame = 3
 frame_progress = 0.869247
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.42109e-14, 1)
+position = Vector2(3, -1)
 rotation = 0.771368
 scale = Vector2(0.50124, 0.901045)
 shape = SubResource("CapsuleShape2D_f5n2k")

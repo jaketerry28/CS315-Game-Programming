@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck0s71chbe0w2"]
 
-[ext_resource type="Script" uid="uid://cu445aieuxmr8" path="res://assets/scenes/game_over.gd" id="1_3vif2"]
+[ext_resource type="Script" uid="uid://cu445aieuxmr8" path="res://assets/scripts/game_over.gd" id="1_3vif2"]
 [ext_resource type="Texture2D" uid="uid://bygtiqvnt3dau" path="res://assets/sprites/restart.png" id="1_wt3e0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vif2"]

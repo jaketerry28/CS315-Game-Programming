@@ -22,6 +22,12 @@ var elapsed_time = 0.0
 @onready var foreground = $AutoScroller/TextureRectForeground.material
 
 
+func _ready() -> void:
+	screen_size = get_window().size
+	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
+	new_game()
+
+
 func _process(delta: float) -> void:
 	if game_running:
 		# Update background shader
@@ -43,48 +49,51 @@ func _process(delta: float) -> void:
 		# Move pipes
 		for pipe in pipes:
 			pipe.position.x -= scroll_speed
+			
 
-func _ready() -> void:
-	screen_size = get_window().size
-	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
-	new_game()
-	
 func new_game():
 	game_running = false
 	game_over = false
+	$GameOver.hide()
+	$Menu.show()
+	$AutoScroller/AudioStreamPlayer.play()
+	$Bird.reset()
+	
+	#Reset Score
 	score = 0
 	$Score.text = "SCORE: " + str(score)
-	$GameOver.hide()
+	
+	#Reset speed
 	scroll = 0
-	scroll_speed = SCROLL_SPEED  # reset to default
+	scroll_speed = SCROLL_SPEED
+	
+	#Remove pipes if any
 	get_tree().call_group("pipes", "queue_free")
 	pipes.clear()
-	generate_pipes()
-	$Bird.reset()
-	$AutoScroller/AudioStreamPlayer.play()
-
 	
-func _input(event):
-		if game_over == false:
-			if event is InputEventMouseButton:
-				if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-					if game_running == false:
-						start_game()
+	#Prepare pipes off screen
+	generate_pipes()
+	
+	
+func _input(InputEvent) -> void:
+	if game_over == false:
+		if Input.is_action_pressed("flap"):
+			if 	$Bird.is_flying:
+				$Bird.flap()
+				check_off_top_screen()
 
-					else:
-						if 	$Bird.is_flying:
-							$Bird.flap()
-							check_off_top_screen()
 
 func start_game():
 	game_running = true
 	$Bird.is_flying = true
+	$Menu.hide()
 	$Bird.flap()
 	$PipeSpawner.start()
 
 	
 func _on_pipe_spawner_timeout() -> void:
 	generate_pipes()
+	
 
 func generate_pipes():
 	var pipe = pipe_scene.instantiate()
@@ -94,15 +103,18 @@ func generate_pipes():
 	pipe.scored.connect(scored_point)
 	add_child(pipe)
 	pipes.append(pipe)
+	
 
 func scored_point():
 	score += 1
 	$Score.text = "SCORE: " + str(score)
+	
 
 func check_off_top_screen():
 	if $Bird.position.y < -5:
 		$Bird.is_falling = true
 		stop_game()
+		
 
 func stop_game():
 	$PipeSpawner.stop()
@@ -112,17 +124,24 @@ func stop_game():
 	game_running = false
 	game_over = true
 	
+	
 func bird_hit():
 	$Bird.is_falling = true
 	stop_game()
 	
-
 
 func _on_ground_hit() -> void:
 	$Bird.is_falling = true
 	stop_game()
 	
 
-
 func _on_game_over_restart() -> void:
 	new_game()
+	
+
+func _on_menu_start_game() -> void:
+	start_game()
+	
+
+func _on_menu_end_game() -> void:
+	get_tree().quit()
