@@ -14,8 +14,8 @@ script = ExtResource("1_f5n2k")
 texture_filter = 1
 sprite_frames = ExtResource("1_dx77w")
 animation = &"flying"
-frame = 3
-frame_progress = 0.869247
+frame = 2
+frame_progress = 0.338299
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -1)
