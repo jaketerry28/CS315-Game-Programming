@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://dwdbr0otw8hfs"]
 
 [ext_resource type="Script" uid="uid://cxmayhvaqagp1" path="res://assets/scenes/menu.gd" id="1_8omcj"]
-[ext_resource type="Texture2D" uid="uid://xgd0aibr3wp4" path="res://assets/sprites/PixelGUI/PlayBtn.png" id="2_ugn2o"]
-[ext_resource type="Texture2D" uid="uid://8osah8cm6wy0" path="res://assets/sprites/PixelGUI/PlayClick.png" id="3_q8r6g"]
-[ext_resource type="Texture2D" uid="uid://dl1bxkyas534y" path="res://assets/sprites/PixelGUI/ExitBtn.png" id="3_xuqax"]
-[ext_resource type="Texture2D" uid="uid://bq6m3hrwpwwii" path="res://assets/sprites/PixelGUI/ExitClick.png" id="4_q8r6g"]
+[ext_resource type="Texture2D" uid="uid://xgd0aibr3wp4" path="res://assets/sprites/PlayBtn.png" id="2_ugn2o"]
+[ext_resource type="Texture2D" uid="uid://8osah8cm6wy0" path="res://assets/sprites/PlayClick.png" id="3_q8r6g"]
+[ext_resource type="Texture2D" uid="uid://dl1bxkyas534y" path="res://assets/sprites/ExitBtn.png" id="3_xuqax"]
+[ext_resource type="Texture2D" uid="uid://bq6m3hrwpwwii" path="res://assets/sprites/ExitClick.png" id="4_q8r6g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuqax"]
 texture = ExtResource("2_ugn2o")

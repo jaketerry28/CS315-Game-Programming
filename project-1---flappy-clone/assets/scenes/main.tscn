@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://4biyymwgcuur"]
+[gd_scene load_steps=9 format=3 uid="uid://4biyymwgcuur"]
 
 [ext_resource type="Script" uid="uid://cbh4oolhy7vpl" path="res://assets/scripts/main.gd" id="1_dfgan"]
 [ext_resource type="PackedScene" uid="uid://conmxp8b4eu7y" path="res://assets/scenes/auto_scroller.tscn" id="1_mr7gh"]
 [ext_resource type="PackedScene" uid="uid://bkwv364gupll8" path="res://assets/scenes/pipe.tscn" id="2_etxf0"]
 [ext_resource type="PackedScene" uid="uid://dq74j72gf75an" path="res://assets/scenes/bird.tscn" id="2_kpi06"]
 [ext_resource type="PackedScene" uid="uid://dgykkqwjcri0r" path="res://assets/scenes/ground.tscn" id="4_sfrgt"]
+[ext_resource type="Script" uid="uid://df872o8ovsvgj" path="res://assets/scripts/pipe_spawner.gd" id="6_6rsl6"]
 [ext_resource type="PackedScene" uid="uid://ck0s71chbe0w2" path="res://assets/scenes/game_over.tscn" id="6_vesw4"]
 [ext_resource type="PackedScene" uid="uid://dwdbr0otw8hfs" path="res://assets/scenes/menu.tscn" id="7_xplbd"]
 
@@ -23,7 +24,8 @@ scale = Vector2(1.6, 1.6)
 z_index = 2
 
 [node name="PipeSpawner" type="Timer" parent="."]
-wait_time = 1.8
+wait_time = 1.502
+script = ExtResource("6_6rsl6")
 
 [node name="Score" type="Label" parent="."]
 z_index = 3
@@ -47,6 +49,7 @@ position = Vector2(440, 460)
 
 [connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
 [connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]
+[connection signal="timeout" from="PipeSpawner" to="PipeSpawner" method="_on_timeout"]
 [connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]
 [connection signal="end_game" from="Menu" to="." method="_on_menu_end_game"]
 [connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]

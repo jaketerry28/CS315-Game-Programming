@@ -20,12 +20,15 @@ func _physics_process(delta: float) -> void:
 	if is_flying or is_falling:
 		velocity.y += GRAVITY * delta
 		
+		#if bird go too fast
 		if velocity.y > MAX_VEL:
 			velocity.y = MAX_VEL
 		
+		#so he turns
 		if is_flying:
 			set_rotation(deg_to_rad(velocity.y * 0.05))
 			$AnimatedSprite2D.play()
+		#fall straight down	
 		elif is_falling:
 			set_rotation(PI/2)
 			$AnimatedSprite2D.stop()

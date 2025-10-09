@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgykkqwjcri0r"]
 
 [ext_resource type="Script" uid="uid://br7e0q0i31po4" path="res://assets/scripts/ground.gd" id="1_5mqpd"]
-[ext_resource type="Texture2D" uid="uid://difokvrr2x8tt" path="res://assets/sprites/craftpix-891123-free-pixel-art-street-2d-backgrounds/PNG/City1/Bright/wall2.png" id="2_mw3ca"]
+[ext_resource type="Texture2D" uid="uid://difokvrr2x8tt" path="res://assets/sprites/wall2.png" id="2_mw3ca"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pfvvu"]
 

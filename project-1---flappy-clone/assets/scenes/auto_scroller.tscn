@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://conmxp8b4eu7y"]
 
 [ext_resource type="Shader" uid="uid://ch3afv0ujh8sv" path="res://assets/scripts/auto_scroller.gdshader" id="1_ep4bu"]
-[ext_resource type="Texture2D" uid="uid://brbdl02gg851y" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/city skyline/Layers/back.png" id="2_0g3x5"]
-[ext_resource type="Texture2D" uid="uid://cx1ggkh3sg3" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/city skyline/Layers/buildings.png" id="3_vudni"]
-[ext_resource type="Texture2D" uid="uid://djtrwsy5htg5q" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/city skyline/Layers/front.png" id="4_avqv5"]
-[ext_resource type="AudioStream" uid="uid://ctcem0jj7jfo1" path="res://assets/sprites/cyberpunk-street-files/cyberpunk-street-files/Assets/music/cyberpunk-street.ogg" id="4_fdg3b"]
+[ext_resource type="Texture2D" uid="uid://brbdl02gg851y" path="res://assets/sprites/back.png" id="2_0g3x5"]
+[ext_resource type="Texture2D" uid="uid://cx1ggkh3sg3" path="res://assets/sprites/buildings.png" id="3_vudni"]
+[ext_resource type="Texture2D" uid="uid://djtrwsy5htg5q" path="res://assets/sprites/front.png" id="4_avqv5"]
+[ext_resource type="AudioStream" uid="uid://ctcem0jj7jfo1" path="res://assets/music/cyberpunk-street.ogg" id="4_fdg3b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfk6u"]
 shader = ExtResource("1_ep4bu")
