@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbm1lsah84mms"]
+
+[ext_resource type="Script" uid="uid://x1rmk3r56cvq" path="res://elements/key.gd" id="1_fttkb"]
+[ext_resource type="Texture2D" uid="uid://jlqn47fe2ds6" path="res://sprites/brackeys_platformer_assets/sprites/fruit.png" id="2_wy8tx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sfc4e"]
+
+[node name="Key" type="Area2D"]
+script = ExtResource("1_fttkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sfc4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wy8tx")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
