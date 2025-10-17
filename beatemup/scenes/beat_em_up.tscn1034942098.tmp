@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://duymv8uw0g5rx"]
+
+[ext_resource type="Script" uid="uid://wx4agdeswi8j" path="res://sprites/beu_player.gd" id="1_hflqk"]
+[ext_resource type="Texture2D" uid="uid://1ypoy7iue3ba" path="res://sprites/adventurer-v1.5-Sheet.png" id="2_ybf1s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57c8x"]
+
+[node name="BeatEmUp" type="Node2D"]
+
+[node name="BEUPlayer" type="CharacterBody2D" parent="."]
+position = Vector2(60, 43)
+scale = Vector2(2, 2)
+script = ExtResource("1_hflqk")
+speed = 200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BEUPlayer"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_57c8x")
+
+[node name="Sprite2D" type="Sprite2D" parent="BEUPlayer"]
+texture = ExtResource("2_ybf1s")
+hframes = 8
+vframes = 16
