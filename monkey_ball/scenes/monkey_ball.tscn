@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6560te4s1q1v"]
+
+[ext_resource type="Script" uid="uid://21vsfemn1ekf" path="res://scenes/ground_movement.gd" id="1_xkyvq"]
+[ext_resource type="Material" uid="uid://cmk61hxic11yr" path="res://m_ground_material.tres" id="2_a2aba"]
+[ext_resource type="Script" uid="uid://btg1wycuq1pd3" path="res://scenes/M_camera_follow_3d.gd" id="3_7opc6"]
+[ext_resource type="PackedScene" uid="uid://decg4ifxhxiw3" path="res://scenes/banana.tscn" id="4_d6418"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihjeg"]
+size = Vector3(10.2218, 0.546875, 2.96588)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ihjeg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7opc6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_d6418"]
+
+[node name="MonkeyBall" type="Node3D"]
+
+[node name="GroundHolder" type="Node3D" parent="."]
+script = ExtResource("1_xkyvq")
+
+[node name="Ground" type="StaticBody3D" parent="GroundHolder"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundHolder/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38068, -0.226563, 1.15585)
+shape = SubResource("BoxShape3D_ihjeg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GroundHolder/Ground"]
+transform = Transform3D(10.2189, 0, 0, 0, 0.59629, 0, 0, 0, 2.97391, 4.37616, -0.252365, 1.14178)
+material_override = ExtResource("2_a2aba")
+mesh = SubResource("BoxMesh_ihjeg")
+
+[node name="Banana" parent="GroundHolder" instance=ExtResource("4_d6418")]
+transform = Transform3D(0.134157, 0, 0, 0, 0.432547, 0, 0, 0, 0.178515, 8.49193, 0.651643, 1.23648)
+
+[node name="Banana2" parent="GroundHolder" instance=ExtResource("4_d6418")]
+transform = Transform3D(0.134157, 0, 0, 0, 0.432547, 0, 0, 0, 0.178515, 6.9335, 0.479421, 0.784518)
+
+[node name="Banana3" parent="GroundHolder" instance=ExtResource("4_d6418")]
+transform = Transform3D(0.134157, 0, 0, 0, 0.432547, 0, 0, 0, 0.178515, 3.34771, 0.479421, 2.03434)
+
+[node name="Banana4" parent="GroundHolder" instance=ExtResource("4_d6418")]
+transform = Transform3D(0.134157, 0, 0, 0, 0.432547, 0, 0, 0, 0.178515, 1.34311, 0.479421, 0.150045)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.601062, 0.799202, 0, -0.799202, 0.601062, 2.30012, 6.37895, 5.11757)
+
+[node name="MPlayer" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67912, 1.0762)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MPlayer"]
+shape = SubResource("SphereShape3D_7opc6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MPlayer"]
+mesh = SubResource("SphereMesh_d6418")
+
+[node name="Camera3D" type="Camera3D" parent="MPlayer" node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(-0.0243623, 0.438131, -0.898581, 0, 0.898848, 0.438261, 0.999703, 0.0106771, -0.021898, -1.69829, 1.81511, 1.16833)
+top_level = true
+script = ExtResource("3_7opc6")
+follow_target = NodePath("..")
+offset = Vector3(-2, 1.5, 0)

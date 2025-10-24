@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6560te4s1q1v"]
+
+[ext_resource type="Script" uid="uid://21vsfemn1ekf" path="res://scenes/ground_movement.gd" id="1_xkyvq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihjeg"]
+size = Vector3(10.2218, 0.546875, 2.96588)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ihjeg"]
+
+[node name="MonkeyBall" type="Node3D"]
+
+[node name="GroundHolder" type="Node3D" parent="."]
+script = ExtResource("1_xkyvq")
+
+[node name="Ground" type="StaticBody3D" parent="GroundHolder"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundHolder/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38068, -0.226563, 1.15585)
+shape = SubResource("BoxShape3D_ihjeg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GroundHolder/Ground"]
+transform = Transform3D(10.2189, 0, 0, 0, 0.59629, 0, 0, 0, 2.97391, 4.37616, -0.252365, 1.14178)
+mesh = SubResource("BoxMesh_ihjeg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.898848, 0.438261, 0, -0.438261, 0.898848, 3.83957, 3.26012, 7.17741)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.601062, 0.799202, 0, -0.799202, 0.601062, 2.30012, 6.37895, 5.11757)
