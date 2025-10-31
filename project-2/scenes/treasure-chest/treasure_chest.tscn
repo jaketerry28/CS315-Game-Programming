@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwkwpc4pu2fas"]
+
+[ext_resource type="Texture2D" uid="uid://e163pmmhj5v4" path="res://Ninja Adventure - Asset Pack/Items/Treasure/BigTreasureChest.png" id="1_m0aie"]
+[ext_resource type="Script" uid="uid://biv1ecahq8ve8" path="res://scenes/treasure-chest/treasure_chest.gd" id="1_urcvu"]
+[ext_resource type="Texture2D" uid="uid://3i4uhvdxg8e0" path="res://Ninja Adventure - Asset Pack/Items/Weapons/Sword2/Sprite.png" id="3_uusbu"]
+[ext_resource type="AudioStream" uid="uid://l1448lbyta62" path="res://Ninja Adventure - Asset Pack/Audio/Sounds/Bonus/Coin.wav" id="4_t24j4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urcvu"]
+size = Vector2(14, 11.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uusbu"]
+atlas = ExtResource("1_m0aie")
+region = Rect2(0, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t24j4"]
+atlas = ExtResource("1_m0aie")
+region = Rect2(16, 0, 16, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3tli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uusbu")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t24j4")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="TreasureChest" type="StaticBody2D" groups=["interactable"]]
+process_mode = 3
+script = ExtResource("1_urcvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_urcvu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o3tli")
+animation = &"close"
+
+[node name="Sword" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+texture = ExtResource("3_uusbu")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_t24j4")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

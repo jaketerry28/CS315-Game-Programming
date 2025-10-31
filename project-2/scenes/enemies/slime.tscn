@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://td5a0bu5ausc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jdcec"]
+load_path = "res://.godot/imported/Slime3.png-ec1fdea768f5621a5bf525548406af8c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahq63"]
+atlas = SubResource("CompressedTexture2D_jdcec")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4h4y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahq63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b58ev"]
+radius = 7.0
+
+[node name="SlimeEnemy" type="CharacterBody2D"]
+collision_layer = 16
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4h4y0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_b58ev")

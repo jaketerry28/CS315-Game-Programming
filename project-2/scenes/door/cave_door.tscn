@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvqu37jeuv4ku"]
+
+[ext_resource type="Script" uid="uid://bbjyhdgoqyhve" path="res://scenes/door/cave_door.gd" id="1_ckadf"]
+[ext_resource type="Texture2D" uid="uid://hlpedtdgjydc" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetReliefDetail.png" id="1_lp1wk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4le7t"]
+atlas = ExtResource("1_lp1wk")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu3y2"]
+size = Vector2(16, 16)
+
+[node name="CaveDoor" type="StaticBody2D" groups=["interactable"]]
+script = ExtResource("1_ckadf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_4le7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bu3y2")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bikqnclxdx5d0"]
+
+[ext_resource type="Script" uid="uid://b4hqo60egc8v2" path="res://scenes/pressure-plate/pressure_plate.gd" id="1_2tn7o"]
+[ext_resource type="Texture2D" uid="uid://bj6xgxw10jt4p" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetDungeon.png" id="1_4btnf"]
+[ext_resource type="AudioStream" uid="uid://cy6vmg8eapv5f" path="res://Ninja Adventure - Asset Pack/Audio/Sounds/Hit & Impact/Impact.wav" id="3_g82dr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tn7o"]
+atlas = ExtResource("1_4btnf")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g82dr"]
+atlas = ExtResource("1_4btnf")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfuys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tn7o")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g82dr")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_701fj"]
+size = Vector2(16, 16)
+
+[node name="PressurePlate" type="Area2D"]
+script = ExtResource("1_2tn7o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_lfuys")
+animation = &"unpressed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.724506, 0.724506)
+shape = SubResource("RectangleShape2D_701fj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g82dr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjokgay7rk4y3"]
+
+[ext_resource type="PackedScene" uid="uid://bikqnclxdx5d0" path="res://scenes/pressure-plate/pressure_plate.tscn" id="1_4emfs"]
+[ext_resource type="Texture2D" uid="uid://bj6xgxw10jt4p" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetDungeon.png" id="2_5ukbu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfhky"]
+atlas = ExtResource("2_5ukbu")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eta1d"]
+atlas = ExtResource("2_5ukbu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glk1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfhky")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eta1d")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[node name="SinglePressPressurePlate" instance=ExtResource("1_4emfs")]
+single_use = true
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_glk1q")

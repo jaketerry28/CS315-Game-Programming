@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
-PlatformerGameController="*res://elements/platformer_game_controller.gd"
+PlatformerGameController="*res://elements/game_controller.gd"
 
 [rendering]
 
