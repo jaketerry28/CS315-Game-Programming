@@ -1,0 +1,137 @@
+[gd_scene load_steps=22 format=3 uid="uid://cp7t5ox2cfumr"]
+
+[ext_resource type="Script" uid="uid://bpjbc7fkp8qd3" path="res://scripts/player.gd" id="1_x4741"]
+[ext_resource type="PackedScene" uid="uid://b8d3ntqqtomxm" path="res://assets/number-0.glb" id="2_da373"]
+[ext_resource type="PackedScene" uid="uid://bd7pc0xo3yswd" path="res://assets/number-6.glb" id="3_ade53"]
+[ext_resource type="PackedScene" uid="uid://b8hnia67afg3h" path="res://assets/number-9.glb" id="4_7an73"]
+[ext_resource type="PackedScene" uid="uid://we7xe7m80c2g" path="res://assets/number-5.glb" id="5_bj4gy"]
+[ext_resource type="Material" uid="uid://bj6ruh05gu453" path="res://materials/ball_ground_material.tres" id="6_ade53"]
+[ext_resource type="Material" uid="uid://c5ha4aks0owis" path="res://materials/selectable_material.tres" id="7_7an73"]
+[ext_resource type="Script" uid="uid://d3p0cf2fgxbf5" path="res://scripts/selectable.gd" id="7_bj4gy"]
+[ext_resource type="PackedScene" uid="uid://dpm2apiobqqgp" path="res://assets/animal-dog.glb" id="9_lxr7n"]
+[ext_resource type="Script" uid="uid://b2mqs8842umy6" path="res://scripts/dog.gd" id="9_q8p2o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_evsdr"]
+sky_top_color = Color(0.241476, 0.464166, 0.674753, 1)
+sky_horizon_color = Color(0.692474, 0.786024, 0.810151, 1)
+ground_bottom_color = Color(0.165776, 0.317285, 0.203205, 1)
+ground_horizon_color = Color(0.692474, 0.786024, 0.810151, 1)
+
+[sub_resource type="Sky" id="Sky_isi01"]
+sky_material = SubResource("ProceduralSkyMaterial_evsdr")
+
+[sub_resource type="Environment" id="Environment_2dy0o"]
+background_mode = 2
+sky = SubResource("Sky_isi01")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_da373"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ade53"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7an73"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_lxr7n"]
+vertices = PackedVector3Array(-20.9467, 0.530765, 1.36635, -9.9467, 0.530765, 1.36635, -9.9467, 0.530765, -0.63365, -8.1967, 0.530765, -0.88365, -8.4467, 0.530765, -19.1336, -20.9467, 0.530765, -19.1336, -7.4467, 0.530765, -0.63365, -0.946699, 0.530765, -2.88365, -1.1967, 0.530765, -4.88365, -0.196699, 0.530765, -19.1336, -0.196699, 0.530765, -5.38365, 1.0533, 0.530765, -2.88365, 7.0533, 0.530765, 1.86635, 8.0533, 0.530765, 1.86635, 1.0533, 0.530765, -4.88365, 21.0533, 0.530765, 3.36635, 21.0533, 0.530765, -19.1336, 9.3033, 0.530765, 3.36635, -0.696699, 0.530765, -2.38365, 0.803301, 0.530765, -2.38365, -7.4467, 0.530765, 3.36635, 3.5533, 0.530765, 5.86635, -7.9467, 0.530765, 3.61635, -9.9467, 0.530765, 3.36635, -8.6967, 0.530765, 3.61635, -20.9467, 0.530765, 19.1164, -8.6967, 0.530765, 19.1164, -8.9467, 3.28076, 1.86635, -8.9467, 3.03076, 2.61635, -8.4467, 3.03076, 2.61635, -8.4467, 3.28076, 1.86635, 4.8033, 4.53076, 5.86635, 4.8033, 4.53076, 6.36635, 5.5533, 4.53076, 6.36635, 6.3033, 4.53076, 5.61635, 6.3033, 4.53076, 4.86635, 8.0533, 4.28076, 3.86635, 7.8033, 4.53076, 3.11635, 7.3033, 4.53076, 3.11635, 9.0533, 0.530765, 4.36635, 6.3033, 0.530765, 6.86635, 6.3033, 0.530765, 7.36635, 5.3033, 0.530765, 7.61635, 5.3033, 0.530765, 19.1164, 21.0533, 0.530765, 19.1164, 3.5533, 0.530765, 6.61635)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(6, 3, 7), PackedInt32Array(7, 3, 8), PackedInt32Array(9, 8, 4), PackedInt32Array(4, 8, 3), PackedInt32Array(9, 10, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(13, 14, 15), PackedInt32Array(15, 14, 9), PackedInt32Array(15, 9, 16), PackedInt32Array(15, 17, 13), PackedInt32Array(9, 14, 10), PackedInt32Array(6, 7, 18), PackedInt32Array(19, 11, 12), PackedInt32Array(18, 19, 6), PackedInt32Array(6, 19, 20), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 12), PackedInt32Array(21, 22, 20), PackedInt32Array(0, 1, 23), PackedInt32Array(23, 24, 0), PackedInt32Array(0, 24, 26), PackedInt32Array(0, 26, 25), PackedInt32Array(30, 29, 27), PackedInt32Array(27, 29, 28), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(34, 31, 35), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 35), PackedInt32Array(38, 35, 31), PackedInt32Array(41, 40, 39), PackedInt32Array(43, 42, 41), PackedInt32Array(39, 17, 15), PackedInt32Array(41, 39, 43), PackedInt32Array(43, 39, 15), PackedInt32Array(43, 15, 44), PackedInt32Array(22, 21, 45), PackedInt32Array(22, 45, 24), PackedInt32Array(24, 45, 42), PackedInt32Array(24, 42, 43), PackedInt32Array(24, 43, 26)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_da373"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_da373"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bj4gy"]
+size = Vector3(1, 4.65186, 4.94452)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxr7n"]
+size = Vector3(0.836182, 0.822632, 1)
+
+[node name="BallChaseGame" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.214735, 0.751451, -0.623867, 0, 0.638768, 0.7694, 0.976672, -0.165217, 0.137166, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2dy0o")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5858, 0)
+script = ExtResource("1_x4741")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_da373")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434305, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0313194, -0.0989349)
+target_position = Vector3(0, 0, -4.5)
+
+[node name="PickupJoint" type="Generic6DOFJoint3D" parent="Player/Camera3D"]
+node_a = NodePath("../..")
+
+[node name="CamRotator" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.598675, 0)
+
+[node name="Ball" type="RigidBody3D" parent="." groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17301, -1.57973)
+script = ExtResource("7_bj4gy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_ade53")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+material_override = ExtResource("7_7an73")
+mesh = SubResource("SphereMesh_7an73")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.452533, 1.03619, 0.792851)
+navigation_mesh = SubResource("NavigationMesh_lxr7n")
+
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(42.8934, 0, 0, 0, 0.21477, 0, 0, 0, 39.2673, 0, 0, 0)
+shape = SubResource("BoxShape3D_da373")
+debug_color = Color(0.664545, 0.246855, 0.144704, 0.784314)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(42.0963, 0, 0, 0, 0.261268, 0, 0, 0, 38.7534, 0, 0, 0)
+material_override = ExtResource("6_ade53")
+mesh = SubResource("BoxMesh_da373")
+
+[node name="number-02" parent="NavigationRegion3D" instance=ExtResource("2_da373")]
+transform = Transform3D(2.89742, 0.950376, -0.949077, -1.16606, 3.04598, -1.15764, 0.502341, 1.58888, 2.78694, -0.260822, 0.372564, -4.24173)
+
+[node name="number-52" parent="NavigationRegion3D" instance=ExtResource("5_bj4gy")]
+transform = Transform3D(6.2192, 0, 0, 0, 2.42034, 5.72891, 0, -5.72891, 2.42034, -8.78732, 1.50897, 2.78979)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.23077, 0.0307646, 5.00568)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(0.765101, 0, -0.64391, 0, 1, 0, 0.64391, 0, 0.765101, 0.0127168, 1.82593, -0.387307)
+shape = SubResource("BoxShape3D_bj4gy")
+
+[node name="number-62" parent="NavigationRegion3D/StaticBody3D" instance=ExtResource("3_ade53")]
+transform = Transform3D(5.60739, 0, -4.98348, 0, 7.60262, 0, 5.13391, 0, 5.44309, 1.08765, 0, -1.18796)
+metadata/_edit_group_ = true
+
+[node name="number-92" parent="NavigationRegion3D/StaticBody3D" instance=ExtResource("4_7an73")]
+transform = Transform3D(5.68001, 0, -5.04802, 0, 7.70108, 0, 5.2004, 0, 5.51358, -0.629253, 0, 0.687287)
+metadata/_edit_group_ = true
+
+[node name="Dog" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0871916, 1.69569, -7.2259)
+script = ExtResource("9_q8p2o")
+
+[node name="animal-dog2" parent="Dog" instance=ExtResource("9_lxr7n")]
+transform = Transform3D(-7.41779e-08, 0, -1.69699, 0, 1.69699, 0, 1.69699, 0, -7.41779e-08, -0.0276777, -0.525602, -0.173637)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dog"]
+transform = Transform3D(-4.69156e-08, 0, 0.543094, 0, 1.0733, 0, -1.0733, 0, -2.37394e-08, -0.0659101, -0.088083, -0.0970225)
+shape = SubResource("BoxShape3D_lxr7n")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Dog"]
