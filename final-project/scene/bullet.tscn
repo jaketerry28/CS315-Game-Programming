@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ltagjtk37n4m"]
+
+[ext_resource type="Texture2D" uid="uid://l1tgwj73f37w" path="res://assets/Legacy Collection/Assets/Packs/warped-Caves/PNG/spritesheets/Fx/shot.png" id="1_qwydi"]
+[ext_resource type="Script" uid="uid://crupo1nfy5wx6" path="res://player/bullet.gd" id="2_xw300"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw300"]
+atlas = ExtResource("1_qwydi")
+region = Rect2(0, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2l4i"]
+atlas = ExtResource("1_qwydi")
+region = Rect2(6, 0, 6, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bt1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw300")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2l4i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xw300"]
+radius = 3.0
+
+[node name="Bullet" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1bt1p")
+frame_progress = 0.879075
+script = ExtResource("2_xw300")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_xw300")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

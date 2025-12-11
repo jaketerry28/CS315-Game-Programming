@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://bds26njudjtxv"]
+
+[ext_resource type="Script" uid="uid://dahln85bdysvu" path="res://ui/pause_menu_screen.gd" id="1_u3k35"]
+[ext_resource type="Theme" uid="uid://b1ktlpo2yg3kr" path="res://ui/theme/game_theme.tres" id="2_u3k35"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_358ax"]
+
+[node name="PauseMenuScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_u3k35")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.690196, 0.384314, 0.282353, 0.0666667)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -123.0
+offset_right = -187.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.36176, 1.36176)
+texture = SubResource("CanvasTexture_358ax")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u3k35")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="MainMenu" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

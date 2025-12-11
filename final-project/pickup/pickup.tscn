@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://uos28nbr4fb6"]
+
+[ext_resource type="Texture2D" uid="uid://dleytsc4q2jny" path="res://assets/Legacy Collection/Assets/Packs/warped-Caves/PNG/spritesheets/Fx/power-up.png" id="1_7srb4"]
+[ext_resource type="Script" uid="uid://c56j0ygonc4bm" path="res://pickup/health_pickup_box.gd" id="2_w677d"]
+[ext_resource type="AudioStream" uid="uid://barh2uhdm8m2p" path="res://assets/music/pickup-sound-82314.mp3" id="3_meels"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w677d"]
+atlas = ExtResource("1_7srb4")
+region = Rect2(0, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meels"]
+atlas = ExtResource("1_7srb4")
+region = Rect2(23, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17ljw"]
+atlas = ExtResource("1_7srb4")
+region = Rect2(46, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n72cc"]
+atlas = ExtResource("1_7srb4")
+region = Rect2(69, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuvkc"]
+atlas = ExtResource("1_7srb4")
+region = Rect2(92, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnn1u"]
+atlas = ExtResource("1_7srb4")
+region = Rect2(115, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55ikj"]
+atlas = ExtResource("1_7srb4")
+region = Rect2(138, 0, 23, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kx4ig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w677d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meels")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17ljw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n72cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuvkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnn1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55ikj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7srb4"]
+
+[node name="Pickup" type="Node2D"]
+script = ExtResource("2_w677d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kx4ig")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[node name="HealthPickupBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthPickupBox"]
+scale = Vector2(0.627675, 0.627675)
+shape = SubResource("CircleShape2D_7srb4")
+debug_color = Color(0.157259, 0.673967, 0.492539, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_meels")
+
+[connection signal="body_entered" from="HealthPickupBox" to="." method="_on_health_pickup_box_body_entered"]

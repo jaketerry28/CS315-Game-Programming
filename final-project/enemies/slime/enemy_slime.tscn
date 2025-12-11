@@ -1,0 +1,181 @@
+[gd_scene load_steps=26 format=3 uid="uid://d1lve2k52gy1w"]
+
+[ext_resource type="Texture2D" uid="uid://x3l0cy85i6qq" path="res://assets/spritesheets/slimer-idle.png" id="1_5gs0q"]
+[ext_resource type="Texture2D" uid="uid://b557bny8v5v4r" path="res://assets/spritesheets/slimer.png" id="2_3nbbl"]
+[ext_resource type="Script" uid="uid://bnfpkbytdhjsy" path="res://scripts/gravity.gd" id="3_3nbbl"]
+[ext_resource type="Script" uid="uid://l7hkixnn3qvx" path="res://scripts/statemachine/node_finite_state_machine.gd" id="4_6ewdx"]
+[ext_resource type="Script" uid="uid://de561qv182k3p" path="res://enemies/slime/state_machine_controller.gd" id="4_opsid"]
+[ext_resource type="Script" uid="uid://cbgh07tv4lamj" path="res://enemies/slime/idle_state.gd" id="5_srwis"]
+[ext_resource type="Script" uid="uid://coj0tcy7jc642" path="res://enemies/slime/attack_state.gd" id="6_hmymp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i2kc"]
+atlas = ExtResource("2_3nbbl")
+region = Rect2(0, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ftx"]
+atlas = ExtResource("2_3nbbl")
+region = Rect2(41, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hltr4"]
+atlas = ExtResource("2_3nbbl")
+region = Rect2(82, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt5qa"]
+atlas = ExtResource("2_3nbbl")
+region = Rect2(123, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmkjd"]
+atlas = ExtResource("2_3nbbl")
+region = Rect2(164, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mia2"]
+atlas = ExtResource("2_3nbbl")
+region = Rect2(205, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t43jf"]
+atlas = ExtResource("2_3nbbl")
+region = Rect2(246, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr77n"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(0, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue7dq"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(41, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcndm"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(82, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeskt"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(123, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rijjm"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(164, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3e2r"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(205, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epfij"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(246, 0, 41, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13gex"]
+atlas = ExtResource("1_5gs0q")
+region = Rect2(287, 0, 41, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4jpr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8i2kc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ftx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hltr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt5qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmkjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mia2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t43jf")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr77n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue7dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcndm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeskt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rijjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3e2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epfij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13gex")
+}],
+"loop": true,
+"name": &"slime_idle",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqvhl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmymp"]
+
+[node name="EnemySlime" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m4jpr")
+animation = &"attack"
+autoplay = "slime_idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_gqvhl")
+
+[node name="Gravity" type="Node" parent="." node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("3_3nbbl")
+character_body_2d = NodePath("..")
+animated_sprite_2d = NodePath("../AnimatedSprite2D")
+
+[node name="StateMachineController" type="Node" parent="." node_paths=PackedStringArray("node_finite_state_machine")]
+script = ExtResource("4_opsid")
+node_finite_state_machine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("4_6ewdx")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("5_srwis")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+slow_down_speed = 200
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("6_hmymp")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+speed = 100
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 10)
+scale = Vector2(8.13016, 8.13016)
+shape = SubResource("CircleShape2D_hmymp")
+debug_color = Color(0.90571, 0.277815, 0.325575, 0.42)
+
+[connection signal="body_entered" from="AttackArea" to="StateMachineController" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="StateMachineController" method="_on_attack_area_body_exited"]

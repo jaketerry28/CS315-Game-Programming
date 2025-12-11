@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://fsom6xnlhvyo"]
+
+[ext_resource type="Texture2D" uid="uid://baiwt6mfgrjsf" path="res://assets/Legacy Collection/Assets/Packs/warped-Caves/PNG/spritesheets/Fx/enemy-death.png" id="1_6875n"]
+[ext_resource type="Script" uid="uid://bm5464cfh8sqm" path="res://enemies/enemy_death_effect.gd" id="2_5mjd1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0de1y"]
+atlas = ExtResource("1_6875n")
+region = Rect2(0, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duwxu"]
+atlas = ExtResource("1_6875n")
+region = Rect2(67, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4t2h"]
+atlas = ExtResource("1_6875n")
+region = Rect2(134, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb0yo"]
+atlas = ExtResource("1_6875n")
+region = Rect2(201, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_birvy"]
+atlas = ExtResource("1_6875n")
+region = Rect2(268, 0, 67, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xdyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0de1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duwxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4t2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb0yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_birvy")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"enemy_death",
+"speed": 10.0
+}]
+
+[node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+scale = Vector2(1.53194, 1.53194)
+sprite_frames = SubResource("SpriteFrames_8xdyl")
+animation = &"enemy_death"
+autoplay = "enemy_death"
+script = ExtResource("2_5mjd1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

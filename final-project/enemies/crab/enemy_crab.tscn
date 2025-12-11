@@ -1,0 +1,127 @@
+[gd_scene load_steps=19 format=3 uid="uid://dma1lee4rj845"]
+
+[ext_resource type="Script" uid="uid://ct40by07v04r8" path="res://enemies/enemy_crab.gd" id="1_pm84v"]
+[ext_resource type="Texture2D" uid="uid://dxrfyj8yhitm1" path="res://assets/Legacy Collection/Assets/Packs/warped-Caves/PNG/spritesheets/enemies/crab-idle.png" id="1_tw8hw"]
+[ext_resource type="Texture2D" uid="uid://debodellx2kh0" path="res://assets/Legacy Collection/Assets/Packs/warped-Caves/PNG/spritesheets/enemies/crab-walk.png" id="2_0krxu"]
+[ext_resource type="Shader" uid="uid://3j66j73x5qeg" path="res://player/player_hit_flash.tres" id="2_ypq0t"]
+[ext_resource type="AudioStream" uid="uid://ch3xem8gygq5f" path="res://assets/music/damage.mp3" id="5_i0fl0"]
+[ext_resource type="AudioStream" uid="uid://xd45r4a88x8c" path="res://assets/music/die.mp3" id="6_yphgl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0fl0"]
+shader = ExtResource("2_ypq0t")
+shader_parameter/enabled = false
+shader_parameter/hit_color = Color(0.717727, 0.86386, 0.870107, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0krxu"]
+atlas = ExtResource("1_tw8hw")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm84v"]
+atlas = ExtResource("1_tw8hw")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnp8h"]
+atlas = ExtResource("1_tw8hw")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad2r6"]
+atlas = ExtResource("1_tw8hw")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q11y"]
+atlas = ExtResource("2_0krxu")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmi2d"]
+atlas = ExtResource("2_0krxu")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11rrs"]
+atlas = ExtResource("2_0krxu")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmyb2"]
+atlas = ExtResource("2_0krxu")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4q11y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0krxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm84v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnp8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad2r6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q11y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmi2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11rrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmyb2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmi2d"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pm84v"]
+
+[node name="EnemyCrab" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_pm84v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_i0fl0")
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_4q11y")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.743516
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_wmi2d")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -13)
+scale = Vector2(1.43853, 1.43853)
+shape = SubResource("CircleShape2D_pm84v")
+debug_color = Color(0.911777, 0.274269, 0.285739, 0.42)
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_i0fl0")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_yphgl")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2mi4j2rbgtg1"]
+
+[ext_resource type="PackedScene" uid="uid://c04ufn4uk4n0p" path="res://levels/base_level.tscn" id="1_khcq3"]
+[ext_resource type="PackedScene" uid="uid://dma1lee4rj845" path="res://enemies/crab/enemy_crab.tscn" id="2_jehdt"]
+[ext_resource type="PackedScene" uid="uid://bve1odgbf3umy" path="res://ui/game_screen.tscn" id="2_rbh7r"]
+[ext_resource type="PackedScene" uid="uid://uos28nbr4fb6" path="res://pickup/pickup.tscn" id="3_ok11k"]
+[ext_resource type="PackedScene" uid="uid://dvoihwgtgytb7" path="res://scripts/portal.tscn" id="5_0fvvq"]
+
+[node name="Tutorial" instance=ExtResource("1_khcq3")]
+
+[node name="GameScreen" parent="." index="0" instance=ExtResource("2_rbh7r")]
+
+[node name="Label" type="Label" parent="." index="7"]
+offset_left = -108.0
+offset_top = -78.0
+offset_right = 12.0
+offset_bottom = -55.0
+text = "SPACE TO JUMP"
+
+[node name="Label2" type="Label" parent="." index="8"]
+offset_left = -448.0
+offset_top = -129.0
+offset_right = -290.0
+offset_bottom = -106.0
+text = "TRY DOUBLE JUMP"
+
+[node name="Label3" type="Label" parent="." index="9"]
+offset_left = 249.0
+offset_top = -89.0
+offset_right = 505.0
+offset_bottom = -66.0
+text = "SHOOT WITH 'L' OR 'RIGHT CLICK'"
+
+[node name="Label4" type="Label" parent="." index="10"]
+offset_left = -566.0
+offset_top = -48.0
+offset_right = -310.0
+offset_bottom = -25.0
+text = "HEALTH PICKUP"
+
+[node name="Label5" type="Label" parent="." index="11"]
+offset_left = -708.0
+offset_top = 79.0
+offset_right = -452.0
+offset_bottom = 102.0
+text = "JUMP HERE"
+
+[node name="EnemyCrab" parent="." index="12" instance=ExtResource("2_jehdt")]
+position = Vector2(412, 7)
+
+[node name="Pickup" parent="." index="13" instance=ExtResource("3_ok11k")]
+position = Vector2(-508, -4)
+
+[node name="Portal" parent="." index="14" instance=ExtResource("5_0fvvq")]
+position = Vector2(-641, 282)
+scale = Vector2(32.769, -1.50008)

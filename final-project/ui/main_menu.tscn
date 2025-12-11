@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://bujrw2m3i3khi"]
+
+[ext_resource type="Texture2D" uid="uid://sxls3duj3frr" path="res://assets/Screenshot 2025-12-09 213615.png" id="1_0dkrt"]
+[ext_resource type="Theme" uid="uid://b1ktlpo2yg3kr" path="res://ui/theme/game_theme.tres" id="1_t7e0r"]
+[ext_resource type="Script" uid="uid://8fje4m0kgha5" path="res://ui/main_menu.gd" id="1_wk0pr"]
+[ext_resource type="AudioStream" uid="uid://by6xuld80hr0n" path="res://assets/music/stay-focused-383207.mp3" id="4_rmr83"]
+
+[node name="MainMenuScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_wk0pr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -123.0
+offset_right = -187.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.36176, 1.36176)
+texture = ExtResource("1_0dkrt")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t7e0r")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "EXIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rmr83")
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

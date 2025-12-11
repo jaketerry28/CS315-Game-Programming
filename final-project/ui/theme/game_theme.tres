@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b1ktlpo2yg3kr"]
+
+[ext_resource type="FontFile" uid="uid://c303rsclt7078" path="res://ui/theme/GravityRegular5.ttf" id="1_v71op"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ghru"]
+bg_color = Color(0.394289, 0.677264, 0.432111, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtkdr"]
+bg_color = Color(0.255626, 0.644072, 0.841794, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v71op"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("1_v71op")
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_4ghru")
+Button/styles/normal = null
+Button/styles/pressed = SubResource("StyleBoxFlat_dtkdr")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_v71op")
